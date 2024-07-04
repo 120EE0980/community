@@ -170,12 +170,12 @@
 	},
 	{
 		"name": "Ludovic Dussart",
-		"github": "m3lkior",
+		"github": "M3lkior",
 		"linkedin": "ludovic-dussart-846a8063",
 		"slack": "U01BM49KL3Z",
 		"twitter": "ldussart",
 		"availableForHire": false,
-		"company": "Ineat",
+		"company": "zatsit",
 		"repos": [
 			"avro-schema-parser"
 		]
@@ -422,6 +422,19 @@
 		]
 	},
 	{
+		"name": "Thulisile Sibanda",
+		"github": "thulieblack",
+		"linkedin": "v-thulisile-sibanda",
+		"twitter": "thulieblack",
+		"slack": "U03CNJPMT7C",
+		"availableForHire": false,
+		"company": "AsyncAPI Initiative",
+		"repos": [
+			"website",
+			"community"
+		]
+	},
+	{
 		"name": "Lewis Relph",
 		"github": "lewis-relph",
 		"availableForHire": false,
@@ -533,19 +546,6 @@
 		"company": "The LEGO Group",
 		"repos": [
 			"bindings"
-		]
-	},
-	{
-		"name": "Barbaño González",
-		"linkedin": "barbano-gonzalez-moreno",
-		"twitter": "BarbanoGonzalez",
-		"github":"Barbanio",
-		"slack":"U01J42QDSLU",
-		"availableForHire": false,
-		"company": "Postman",
-		"repos": [
-			 "training",
-			 "community"
 		]
 	},
 	{

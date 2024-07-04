@@ -50,9 +50,9 @@ on:
     secrets:
       GH_TOKEN:
         required: true
-      ZOOM_API_KEY:
+      ZOOM_ACCOUNT_ID:
         required: true
-      ZOOM_API_SECRET:
+      ZOOM_TOKEN:
         required: true
       STREAM_URL:
         required: true
@@ -74,8 +74,8 @@ on:
 jobs:
   setup-meeting:
     env:
-      ZOOM_API_KEY: ${{ secrets.ZOOM_API_KEY }}
-      ZOOM_API_SECRET: ${{ secrets.ZOOM_API_SECRET }}
+      ZOOM_ACCOUNT_ID: ${{ secrets.ZOOM_ACCOUNT_ID }}
+      ZOOM_TOKEN: ${{ secrets.ZOOM_TOKEN }}
       STREAM_URL: ${{ secrets.STREAM_URL }}
       STREAM_KEY: ${{ secrets.STREAM_KEY }}
       CALENDAR_ID: ${{ secrets.CALENDAR_ID }}
@@ -91,6 +91,13 @@ jobs:
             const [HH, MM] = time.split(':')
             if(Number(HH) > 23 || Number(HH) < 0 || !(Number(MM) === 0 || Number(MM) === 30)){
               core.setFailed(`${time} is an invalid input. Time should be in UTC time zone in "HH:MM"(MM can be 00 or 30), like: 08:30 or 16:00. No PM or AM versions.`);
+            }
+            // Validate if the event is in the future
+            const eventDate = new Date('${{ inputs.date }}T${{ inputs.time }}:00Z');
+            const currentDate = new Date();
+            if (eventDate <= currentDate) {
+              let errorMessage = `The event cannot be scheduled in the past. You attempted to schedule the event on ${eventDate.toLocaleString()}, but the current date and time is ${currentDate.toLocaleString()}. Please specify a future date and time for the event.`;
+              core.setFailed(errorMessage);
             }
       - name: Checkout repository
         uses: actions/checkout@v2
